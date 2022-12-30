@@ -1,0 +1,105 @@
+.home-title{
+    font-family: "Epilogue", sans-serif;
+    color: #333333;
+    font-weight: 900;
+}
+.home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.no-games{
+    font-family: 'Bilbo', normal;
+    text-align: center;
+    font-size: 5rem;
+    width: 75%;
+    font-weight: 200;
+}
+.new-game-button{
+    font-family: 'Epilogue', sans-serif;
+    font-weight: 700;
+    border: none;
+    box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.16);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1rem;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    width: 80%;
+    background-color: #F2C94C;
+    color: #ffffff;
+}
+.games{
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.game{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 95%;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.16);
+    background-color: #ffffff;
+}
+.game > h3{
+    font-family: 'Epilogue', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-bottom: 0.5rem;
+}
+.game > h4{
+    font-family: 'Epilogue', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1rem;
+    margin-bottom: 1rem;
+}
+.game > h5{
+    font-family: 'Epilogue', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.7rem;
+    line-height: 1rem;
+    margin-bottom: 0.5rem;
+}
+.game > .game-button{
+    font-family: 'Epilogue', sans-serif;
+    font-weight: 700;
+    border: none;
+    box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.16);
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    background-color: #F2C94C;
+    color: #ffffff;
+}
+.game>.new-game-btn{
+    position: fixed;
+width: 124px;
+height: 40px;
+right: 24px;
+bottom: 24px;
+
+background: #270F36;
+border: none;
+box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.16);
+border-radius: 8px;
+color: #ffffff;
+
+}
+

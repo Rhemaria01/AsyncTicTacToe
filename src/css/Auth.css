@@ -1,0 +1,61 @@
+.authpage{
+   height: 85vh;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-family: "Epilogue", sans-serif;
+    padding-left: 2rem;
+}
+
+.authpage >div > h4 {
+    margin-bottom: 1rem;
+}
+.authpage >div > h2 {
+    margin-bottom: 2rem;
+    width: 65vw;
+}
+.authpage >div > input[type="text"],input[type="password"],input[type="email"] {
+    width: 85vw;
+    height: 2rem;
+    margin-bottom: 1rem;
+    border: none;
+    color: #333333;
+    background-color: #f2f2f2;
+    padding: 2rem;
+    padding-left: 2rem;
+    border-radius: 5px;
+}
+.regis-btn,.congs-btn,.error-btn{
+    width: 85vw;
+    border: none;
+    font-family: 'Epilogue', sans-serif;
+    font-weight: 700;
+    font-size: 1em;
+    color: #ffffff;
+    background-color: #F2C94C;
+    padding: 1.5rem;
+    box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.16);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    
+    margin: 2rem 0rem 2rem 0rem;
+}
+.regis-btn{
+    justify-self: flex-end;
+}
+.congs-btn{
+    background-color: #6FCF97;
+    margin-bottom: 2rem;
+}
+form>button:disabled,.regis-btn:disabled{
+    background: #E0E0E0;
+}
+.error-btn{
+    background-color: #EB5757;
+    text-transform: capitalize;
+    margin-bottom: 5rem;
+
+}

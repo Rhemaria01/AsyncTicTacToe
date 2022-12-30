@@ -1,24 +1,44 @@
-import logo from './logo.svg';
+import React,{useState} from 'react';
+import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
+
+import {MobileView} from 'react-device-detect';
+
+import {UserContext} from './context/UserContext';
+
+import Homepage from './pages/Homepage';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import NewGame from './pages/NewGame';
+import Game from './pages/Game';
+import Home from './pages/Home';
+
 import './App.css';
+import { SessionContext } from './context/SesssionContext';
+
+
 
 function App() {
+  const [user,setUser] = useState(null);
+  const [session,setSession] = useState(null);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <MobileView>
+    <Router>
+      <UserContext.Provider value={{user,setUser}}>
+      <SessionContext.Provider value={{session,setSession}}>
+    <Routes>
+      <Route path='/' element={<Homepage />} />
+      <Route path='/register' element={<Register />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/newgame' element={<NewGame />} />
+      <Route path='/game/:sessionID' element={<Game />} />
+      <Route path='/home' element={<Home />} />
+    </Routes>
+    </SessionContext.Provider>
+    </UserContext.Provider>
+    </Router>
+    </MobileView>
+  </>
   );
 }
 

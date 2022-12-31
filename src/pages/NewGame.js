@@ -145,7 +145,7 @@ const NewGame = () => {
             <button type='button' className='error-btn' style={{textTransform: "initial",fontSize:"0.9rem"}} hidden={!error.error}>{error.message}</button>
             
             {loading ? <div style={{marginLeft: "9rem"}} className="lds-ring"><div></div><div></div><div></div><div></div></div> :<button type='submit' onClick={e => getUsers(e)} className='regis-btn' hidden={sessionCreated} > Start Game</button>}
-            <Link to={`/game/${window.btoa(sessionID)}`} ><button type='button'className='congs-btn' hidden={!sessionCreated} > Play Game</button></Link>
+            <Link to={`/game/${window.btoa(sessionID)}`} ><button type='button' className='congs-btn' hidden={!sessionCreated} > Play Game</button></Link>
             </div>
         </div>
     </>

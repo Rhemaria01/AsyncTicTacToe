@@ -1,6 +1,6 @@
 import React,{useContext,useState,useEffect} from 'react'
 import { UserContext } from '../context/UserContext'
-import { Link } from 'react-router-dom';
+import { Link, redirect } from 'react-router-dom';
 
 import { doc, getDoc } from "firebase/firestore";
 import db from '../firebase';
@@ -44,7 +44,9 @@ const Home = () => {
 
     }
       useEffect(() => {
-        console.log('useEffect');
+          if (context.user === null) {
+            return redirect("/login")
+          }
         
           getData();
       },[])                                   

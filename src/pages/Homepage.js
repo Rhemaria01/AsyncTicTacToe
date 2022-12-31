@@ -20,8 +20,8 @@ const Homepage = () => {
             <h2>tic tac toe</h2>
         </div>
         <div className='homepage-buttons'>
-            <button className='login'><Link to="/login" className='link' exact="true">Login</Link></button>
-            <button className='register'><Link to="/register" className='link' exact="true">Register</Link></button>
+           <Link to="/login" className='link' exact="true"> <input type="button" className='login' value={"Login"} /></Link>
+            <Link to="/register" className='link' exact="true"><input type="button" className='register' value={"Register"}/></Link>
         </div>    
     </div>
     

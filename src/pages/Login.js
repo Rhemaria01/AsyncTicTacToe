@@ -6,6 +6,7 @@ import Home from './Home'
 
 import Back from '../components/Back'
 import "../css/Auth.css"
+import { redirect } from 'react-router';
 
 
 const Login = () => {
@@ -16,13 +17,6 @@ const Login = () => {
         error: false,
         message: ''
     });
-    useEffect(() => {
-        const loggedInUser = localStorage.getItem("user");
-        console.log();
-        if (loggedInUser) {
-          context.setUser(JSON.parse(loggedInUser));
-        }
-        }, []);
 
     const signinUser = async (e) => {
         e.preventDefault();
@@ -33,7 +27,7 @@ const Login = () => {
     const user = userCredential.user;
     context.setUser(user);
 
-    localStorage.setItem("user",JSON.parse(user));
+
 
     
     // ...

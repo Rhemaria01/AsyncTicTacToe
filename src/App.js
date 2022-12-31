@@ -13,7 +13,7 @@ import Game from './pages/Game';
 import Home from './pages/Home';
 
 import './App.css';
-import { SessionContext } from './context/SesssionContext';
+
 
 
 
@@ -25,7 +25,7 @@ function App() {
     <MobileView>
     <Router>
       <UserContext.Provider value={{user,setUser}}>
-      <SessionContext.Provider value={{session,setSession}}>
+
     <Routes>
       <Route path='/' element={<Homepage />} />
       <Route path='/register' element={<Register />} />
@@ -34,7 +34,7 @@ function App() {
       <Route path='/game/:sessionID' element={<Game />} />
       <Route path='/home' element={<Home />} />
     </Routes>
-    </SessionContext.Provider>
+
     </UserContext.Provider>
     </Router>
     </MobileView>

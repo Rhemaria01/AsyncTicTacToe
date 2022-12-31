@@ -1,16 +1,10 @@
-import React,{useEffect,useContext} from 'react'
+import React,{useContext} from 'react'
 import { Link, Navigate } from 'react-router-dom';
 import { UserContext } from '../context/UserContext'
 
 import "../css/Homepage.css"
 const Homepage = () => {
   const context = useContext(UserContext);
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user) {
-      context.setUser(user);
-    }
-  }, [])
 
   return (
     context.user ? <Navigate to='/home' /> :

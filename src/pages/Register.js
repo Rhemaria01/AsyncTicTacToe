@@ -65,7 +65,6 @@ const Register = () => {
               });
             context.setUser(user);
             setRegister(true);
-            localStorage.setItem('user',user);
         })
         .catch((error) => {
           setError({

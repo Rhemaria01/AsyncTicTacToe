@@ -42,15 +42,19 @@ const NewGame = () => {
         
         console.log('Searching for session');
         
-       userSnapshot.data().Session.forEach(session => {
+       const searchResult = await userSnapshot.data().Session.forEach(async session => {
               if (session.opponent === email) {
-                  console.log(session.sessionID);
+                //   console.log(session.sessionID);
                   const dbref = ref(getDatabase()); 
-                  get(child(dbref, `sessions/${session.sessionID}`)).then((snapshot) => {
+                 await  get(child(dbref, `sessions/${session.sessionID}`)).then((snapshot) => {
                       if (snapshot.exists()) {
+                        console.log(snapshot.exists());
+                        
                         console.log('Session Found');
                         
                     if (snapshot.val().winner === "ongoing") {
+                        console.log('Condition:' + snapshot.val().winner);
+                        
                         console.log('Session ongoing');
                         sessionFound = true;
                         setError({
@@ -58,16 +62,24 @@ const NewGame = () => {
                             message: 'You already have an ongoing game with this user'
                         })
                         setLoading(false);
+                        return true
                     }
-                    }}).catch((error) => {
+                    return false
+                    }
+
+                }).catch((error) => {
                         console.error(error);
                     });
-               
-                    return 
+
                 }
-             
+             return false
             });
-            sessionFound ? console.log('Session Found') : createSession(querySnapshot,userSnapshot);
+            if (sessionFound === false) {
+                console.log('Session not found');
+                
+                createSession(querySnapshot,userSnapshot);
+            }
+
     }
 
 

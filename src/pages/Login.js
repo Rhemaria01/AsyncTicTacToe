@@ -12,6 +12,7 @@ import { redirect } from 'react-router';
 const Login = () => {
     const context = useContext(UserContext);
     const [email, setEmail] = useState('');
+    const [loading, setLoading] = useState(false);
     const [password, setPassword] = useState('');
     const [error, setError] = useState({
         error: false,
@@ -20,24 +21,22 @@ const Login = () => {
 
     const signinUser = async (e) => {
         e.preventDefault();
+        setLoading(true);
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
     context.setUser(user);
-
-
-
-    
-    // ...
+    setLoading(false);
      })
     .catch((error) => {
     setError({
         error: true,
         message: error.message
+
     });
-    
+    setLoading(false);
     });
     }
   return (
@@ -56,7 +55,9 @@ const Login = () => {
         </div>
         <div>
             <button type="button"  className='error-btn' hidden={!error.error}>{error.message}</button>
-            <button type="submit" onClick={e => signinUser(e)} className='regis-btn' >Login</button>
+            {loading?
+            <div style={{marginLeft: "9rem"}} className="lds-ring"><div></div><div></div><div></div><div></div></div> :
+             <button type="submit" onClick={e => signinUser(e)} className='regis-btn' >Login</button>}
         </div>    
         </form>    
         </>}

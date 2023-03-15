@@ -14,9 +14,9 @@ import "../css/Home.css"
 const Home = () => {
   const context = useContext(UserContext);
   const [games, setGames] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
     const getData = async () => {
-          setLoading(true);   
+ 
         const docRef = doc(db, "users", context.user.uid);
         const docSnap = await getDoc(docRef);
         const dbRef = ref(getDatabase());
@@ -30,6 +30,7 @@ const Home = () => {
                     console.log(new Date(snapshot.val().lastUpdated));
                     
                   setGames(games => [...games, { sessionID: session.sessionID, opponentName: session.opponentName, turn: snapshot.val().turn, lastUpdated: snapshot.val().lastUpdated, winner : snapshot.val().winner}]);
+                  setLoading(false);
                 } else {
                   setLoading(false);
                 }
@@ -40,7 +41,7 @@ const Home = () => {
         
         } 
 
-          setLoading(false);
+          
 
     }
       useEffect(() => {
@@ -55,6 +56,7 @@ const Home = () => {
   return (
     <>
         <h2 className='home-title'>Your Games</h2>
+
             {
             games.length > 0 ? 
             <div className='games'>

@@ -16,7 +16,7 @@ const Game = () => {
     const sessionID = window.atob(useParams().sessionID);
     const context = useContext(UserContext);
     const dbRef = ref(getDatabase());
-    
+    const [loading,setLoading] = useState(true);
     const [opponent,setOpponent] = useState("");
 
     const [auth,setAuth] = useState(false);
@@ -40,10 +40,12 @@ const Game = () => {
                 if (snapshot.val().player1ID === context.user.uid) {
                     getOpponent(snapshot.val().player2ID);
                     setAuth(true);
+                    setLoading(false);
                     startBoard(snapshot.val().board);
                 } else if (snapshot.val().player2ID === context.user.uid) {
                     getOpponent(snapshot.val().player1ID);
                     setAuth(true);
+                    setLoading(false);
                     startBoard(snapshot.val().board);
                 }
                 
@@ -53,7 +55,7 @@ const Game = () => {
           }).catch((error) => {
             console.error(error);
           }).finally(() => {
-            
+            setLoading(false);
           });
     }
     const startBoard = async (board) => {
@@ -150,10 +152,7 @@ const Game = () => {
 
   
     useEffect(() => {
-        console.log('use effect');
-        
-        authorize();
-        
+        authorize();     
     },[])
 
 
@@ -161,7 +160,8 @@ const Game = () => {
         return <Navigate to="/login" />
     }
   return (
-    <>
+    !loading?
+     <>
     <Back />
     {auth ? 
     <>
@@ -209,7 +209,11 @@ const Game = () => {
     <h1 style={{ width:"75%", paddingLeft:"2rem"}}>Unauthorized to play this game</h1>
     </div>
     }
-    </>
+    </> :
+    <div style={{display:"flex",height:"100vh", justifyContent:"center", alignItems:"center"}}>  
+    <div  className="lds-ring"><div></div><div></div><div></div><div></div></div>
+    </div>
+
   )
 }
 

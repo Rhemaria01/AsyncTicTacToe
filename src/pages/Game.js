@@ -118,7 +118,7 @@ const Game = () => {
         updates[`sessions/${sessionID}/board/${index}`] = context.user.uid === session.player1ID ? "1" : "2";
         updates[`sessions/${sessionID}/turn`] = context.user.uid === session.player1ID ? session.player2ID : session.player1ID;
         updates[`sessions/${sessionID}/stepCount`] = session.stepCount + 1;
-        if(session.stepCount > 4) {
+        if(session.stepCount > 3) {
             const winner = checkWinner(board);
             if (winner) {
                 updates[`sessions/${sessionID}/winner`] = winner;
